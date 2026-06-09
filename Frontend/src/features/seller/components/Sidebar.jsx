@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Icons from '../../shared/icons/Icons';
+import {useAuth} from '../../auth/hook/useAuth';
 
 const NAV_ITEMS = [
   {label: "Collection" , to: '/' , icon : Icons.Home},
@@ -41,6 +42,7 @@ const NavItem = ({ to, label, Icon, onClose }) => (
 
 const SidebarContent = ({ onClose }) => {
   const navigate = useNavigate()
+  const { handleLogout } = useAuth();
 
 
   return (
@@ -79,7 +81,11 @@ const SidebarContent = ({ onClose }) => {
 
 
         <button
-          onClick={() => navigate('/login', { replace: true })}
+          onClick={() => {
+            handleLogout();
+            navigate('/login', { replace: true })
+          
+          }}
           className="flex items-center gap-1.5 font-label text-[0.7rem] tracking-[0.12em] uppercase text-snitch-gold bg-transparent border-none p-0 cursor-pointer hover:text-snitch-charcoal transition-colors duration-300 py-4"
         >
           <Icons.Logout size={17} className='mr-2' /> Logout

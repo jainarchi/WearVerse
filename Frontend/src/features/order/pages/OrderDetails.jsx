@@ -25,12 +25,12 @@ const formatTime = (dateStr) => {
 };
 
 const STATUS_CONFIG = {
-  pending:    { bg: 'bg-amber-100',   text: 'text-amber-700',   dot: 'bg-amber-500',   label: 'Pending'    },
-  confirmed:  { bg: 'bg-[#d4f0dc]',   text: 'text-[#2d6a4f]',  dot: 'bg-[#2d6a4f]',  label: 'Confirmed'  },
-  processing: { bg: 'bg-blue-100',    text: 'text-blue-700',    dot: 'bg-blue-500',    label: 'Processing' },
-  shipped:    { bg: 'bg-[#fef3c7]',   text: 'text-[#92400e]',  dot: 'bg-[#92400e]',  label: 'Shipped'    },
-  delivered:  { bg: 'bg-emerald-100', text: 'text-emerald-700', dot: 'bg-emerald-500', label: 'Delivered'  },
-  cancelled:  { bg: 'bg-red-100',     text: 'text-red-600',     dot: 'bg-red-500',     label: 'Cancelled'  },
+  pending: { bg: 'bg-amber-100', text: 'text-amber-700', dot: 'bg-amber-500', label: 'Pending' },
+  confirmed: { bg: 'bg-[#d4f0dc]', text: 'text-[#2d6a4f]', dot: 'bg-[#2d6a4f]', label: 'Confirmed' },
+  processing: { bg: 'bg-blue-100', text: 'text-blue-700', dot: 'bg-blue-500', label: 'Processing' },
+  shipped: { bg: 'bg-[#fef3c7]', text: 'text-[#92400e]', dot: 'bg-[#92400e]', label: 'Shipped' },
+  delivered: { bg: 'bg-emerald-100', text: 'text-emerald-700', dot: 'bg-emerald-500', label: 'Delivered' },
+  cancelled: { bg: 'bg-red-100', text: 'text-red-600', dot: 'bg-red-500', label: 'Cancelled' },
 };
 
 /* ── Small Info Block ── */
@@ -70,21 +70,31 @@ const SectionHeader = ({ label, count }) => (
 
 
 const JOURNEY_STEPS = [
-  { key: 'pending',    label: 'Order Placed', icon: (
-   <Icons.Pending className='w-4 h-4  fill-[#ffffff] ' />
-  )},
-  { key: 'confirmed',  label: 'Confirmed', icon: (
-     <Icons.Confirmed className='w-4 h-4  fill-[#ffffff] ' />
-  )},
-  { key: 'processing', label: 'Processing', icon: (
-    <Icons.Processing className='w-4 h-4  fill-[#ffffff] ' />
-  )},
-  { key: 'shipped',    label: 'Shipped', icon: (
-    <Icons.Shipped className='w-4 h-4  fill-[#ffffff] ' />
-  )},
-  { key: 'delivered',  label: 'Delivered', icon: (
-    <Icons.Delivered className='w-4 h-4  fill-[#ffffff] ' />
-  )},
+  {
+    key: 'pending', label: 'Order Placed', icon: (
+      <Icons.Pending className='w-4 h-4  fill-[#ffffff] ' />
+    )
+  },
+  {
+    key: 'confirmed', label: 'Confirmed', icon: (
+      <Icons.Confirmed className='w-4 h-4  fill-[#ffffff] ' />
+    )
+  },
+  {
+    key: 'processing', label: 'Processing', icon: (
+      <Icons.Processing className='w-4 h-4  fill-[#ffffff] ' />
+    )
+  },
+  {
+    key: 'shipped', label: 'Shipped', icon: (
+      <Icons.Shipped className='w-4 h-4  fill-[#ffffff] ' />
+    )
+  },
+  {
+    key: 'delivered', label: 'Delivered', icon: (
+      <Icons.Delivered className='w-4 h-4  fill-[#ffffff] ' />
+    )
+  },
 ];
 
 const getStepIndex = (status) => {
@@ -94,8 +104,8 @@ const getStepIndex = (status) => {
 };
 
 const OrderJourney = ({ status = 'confirmed' }) => {
-  const isCancelled  = status?.toLowerCase() === 'cancelled';
-  const activeIdx    = isCancelled ? -1 : getStepIndex(status);
+  const isCancelled = status?.toLowerCase() === 'cancelled';
+  const activeIdx = isCancelled ? -1 : getStepIndex(status);
 
   if (isCancelled) {
     return (
@@ -137,8 +147,8 @@ const OrderJourney = ({ status = 'confirmed' }) => {
         <div className="flex items-start">
           {JOURNEY_STEPS.map((step, idx) => {
             const isCompleted = idx < activeIdx;
-            const isActive    = idx === activeIdx;
-            const isFuture    = idx > activeIdx;
+            const isActive = idx === activeIdx;
+            const isFuture = idx > activeIdx;
 
             return (
               <div key={step.key} className="flex-1 flex flex-col items-center relative group">
@@ -146,18 +156,16 @@ const OrderJourney = ({ status = 'confirmed' }) => {
                 {/* Connector line — left side */}
                 {idx > 0 && (
                   <div className="absolute top-[18px] right-1/2 left-[-50%] h-[1.5px] -translate-y-1/2" style={{ left: 0, right: '50%' }}>
-                    <div className={`h-full transition-all duration-700 ${
-                      isCompleted || isActive ? 'bg-[#C9A96E]' : 'bg-[#e8e4df]'
-                    }`} />
+                    <div className={`h-full transition-all duration-700 ${isCompleted || isActive ? 'bg-[#C9A96E]' : 'bg-[#e8e4df]'
+                      }`} />
                   </div>
                 )}
 
                 {/* Connector line — right side */}
                 {idx < JOURNEY_STEPS.length - 1 && (
                   <div className="absolute top-[18px] h-[1.5px]" style={{ left: '50%', right: 0 }}>
-                    <div className={`h-full transition-all duration-700 ${
-                      isCompleted ? 'bg-[#C9A96E]' : 'bg-[#eae8e5]'
-                    }`} />
+                    <div className={`h-full transition-all duration-700 ${isCompleted ? 'bg-[#C9A96E]' : 'bg-[#eae8e5]'
+                      }`} />
                   </div>
                 )}
 
@@ -165,12 +173,11 @@ const OrderJourney = ({ status = 'confirmed' }) => {
                 <div className={`
                   relative z-10 w-9 h-9 flex items-center justify-center
                   transition-all duration-500
-                  ${
-                    isActive
-                      ? 'bg-[#C9A96E] text-white ring-4 ring-[#C9A96E]/20'
-                      : isCompleted
-                        ? 'bg-[#1b1c1a] text-white'
-                        : 'bg-[#eae8e5] text-[#B5ADA3]'
+                  ${isActive
+                    ? 'bg-[#C9A96E] text-white ring-4 ring-[#C9A96E]/20'
+                    : isCompleted
+                      ? 'bg-[#1b1c1a] text-white'
+                      : 'bg-[#eae8e5] text-[#B5ADA3]'
                   }
                 `}>
                   {isCompleted ? (
@@ -193,12 +200,11 @@ const OrderJourney = ({ status = 'confirmed' }) => {
                   font-[family-name:var(--font-sans)]
                   text-[8px] sm:text-[9px] tracking-[0.16em] uppercase
                   transition-colors duration-300
-                  ${
-                    isActive
-                      ? 'text-[#C9A96E] font-semibold'
-                      : isCompleted
-                        ? 'text-[#1b1c1a] font-medium'
-                        : 'text-[#B5ADA3]'
+                  ${isActive
+                    ? 'text-[#C9A96E] font-semibold'
+                    : isCompleted
+                      ? 'text-[#1b1c1a] font-medium'
+                      : 'text-[#B5ADA3]'
                   }
                 `}>
                   {step.label}
@@ -218,9 +224,9 @@ const OrderJourney = ({ status = 'confirmed' }) => {
       <div className="sm:hidden flex flex-col gap-0">
         {JOURNEY_STEPS.map((step, idx) => {
           const isCompleted = idx < activeIdx;
-          const isActive    = idx === activeIdx;
-          const isFuture    = idx > activeIdx;
-          const isLast      = idx === JOURNEY_STEPS.length - 1;
+          const isActive = idx === activeIdx;
+          const isFuture = idx > activeIdx;
+          const isLast = idx === JOURNEY_STEPS.length - 1;
 
           return (
             <div key={step.key} className="flex gap-4">
@@ -229,12 +235,11 @@ const OrderJourney = ({ status = 'confirmed' }) => {
                 <div className={`
                   w-8 h-8 flex items-center justify-center
                   transition-all duration-500 shrink-0
-                  ${
-                    isActive
-                      ? 'bg-[#C9A96E] text-white ring-4 ring-[#C9A96E]/20'
-                      : isCompleted
-                        ? 'bg-[#1b1c1a] text-white'
-                        : 'bg-[#eae8e5] text-[#B5ADA3]'
+                  ${isActive
+                    ? 'bg-[#C9A96E] text-white ring-4 ring-[#C9A96E]/20'
+                    : isCompleted
+                      ? 'bg-[#1b1c1a] text-white'
+                      : 'bg-[#eae8e5] text-[#B5ADA3]'
                   }
                 `}>
                   {isCompleted ? (
@@ -244,9 +249,8 @@ const OrderJourney = ({ status = 'confirmed' }) => {
                   ) : step.icon}
                 </div>
                 {!isLast && (
-                  <div className={`w-[1.5px] flex-1 min-h-[24px] my-1 transition-colors duration-700 ${
-                    isCompleted ? 'bg-[#C9A96E]' : 'bg-[#eae8e5]'
-                  }`} />
+                  <div className={`w-[1.5px] flex-1 min-h-[24px] my-1 transition-colors duration-700 ${isCompleted ? 'bg-[#C9A96E]' : 'bg-[#eae8e5]'
+                    }`} />
                 )}
               </div>
 
@@ -256,12 +260,11 @@ const OrderJourney = ({ status = 'confirmed' }) => {
                   font-[family-name:var(--font-sans)]
                   text-[9px] tracking-[0.16em] uppercase mt-1.5
                   transition-colors duration-300
-                  ${
-                    isActive
-                      ? 'text-[#C9A96E] font-semibold'
-                      : isCompleted
-                        ? 'text-[#1b1c1a] font-medium'
-                        : 'text-[#B5ADA3]'
+                  ${isActive
+                    ? 'text-[#C9A96E] font-semibold'
+                    : isCompleted
+                      ? 'text-[#1b1c1a] font-medium'
+                      : 'text-[#B5ADA3]'
                   }
                 `}>
                   {step.label}
@@ -283,12 +286,12 @@ const OrderJourney = ({ status = 'confirmed' }) => {
 
 const OrderDetails = () => {
   const { orderId } = useParams();
-  const navigate    = useNavigate();
+  const navigate = useNavigate();
   const { handleGetOrderDetails } = useOrder();
 
-  const [order,   setOrder]   = useState(null);
+  const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error,   setError]   = useState(null);
+  const [error, setError] = useState(null);
 
   const fetchOrder = async () => {
     if (!orderId) return;
@@ -311,9 +314,9 @@ const OrderDetails = () => {
   useEffect(() => { fetchOrder(); }, [orderId]);
 
   /* ── Derived data ── */
-  const shortId   = orderId ? `#SN-${orderId.slice(-6).toUpperCase()}` : '—';
+  const shortId = orderId ? `#SN-${orderId.slice(-6).toUpperCase()}` : '—';
   const subOrders = order?.subOrders ?? [];
-  const allItems  = subOrders.flatMap(s => s.items ?? []);
+  const allItems = subOrders.flatMap(s => s.items ?? []);
   const itemCount = allItems.length;
 
   return (
@@ -413,7 +416,7 @@ const OrderDetails = () => {
 
               {/*Page Header*/}
               <header className="mb-10 sm:mb-14">
-              
+
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-6">
                   <h1 className="
                     font-[family-name:var(--font-serif)] font-light italic
@@ -452,13 +455,13 @@ const OrderDetails = () => {
                     status={subOrders[0]?.status ?? 'confirmed'}
                   />
                   {subOrders.map((subOrder, sIdx) => {
-                    const status    = (subOrder.status || 'confirmed').toLowerCase();
-                    const cfg       = STATUS_CONFIG[status] ?? STATUS_CONFIG.confirmed;
-                    const items     = subOrder.items ?? [];
-                    const subTotal  = items.reduce(
+                    const status = (subOrder.status || 'confirmed').toLowerCase();
+                    const cfg = STATUS_CONFIG[status] ?? STATUS_CONFIG.confirmed;
+                    const items = subOrder.items ?? [];
+                    const subTotal = items.reduce(
                       (acc, it) => acc + (it.price?.amount ?? 0) * (it.quantity ?? 1), 0
                     );
-                    const currency  = items[0]?.price?.currency ?? 'INR';
+                    const currency = items[0]?.price?.currency ?? 'INR';
 
                     return (
                       <section
@@ -649,11 +652,11 @@ const OrderDetails = () => {
                       <div className="flex gap-3 mt-1">
                         {/* Pin icon */}
                         <div className="shrink-0 pt-0.5">
-                           <Icons.Location className='w-4 h-4  fill-[#C9A96E] ' />
+                          <Icons.Location className='w-4 h-4  fill-[#C9A96E] ' />
                         </div>
 
                         <div>
-                         
+
                           {order.deliveryAddress.label && (
                             <span className="
                               inline-block

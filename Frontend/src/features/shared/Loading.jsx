@@ -1,16 +1,12 @@
-import React from 'react'
+const Loading = () => {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <div className="relative h-18 w-18">
+        <div className="absolute inset-0 rounded-full border-2 border-snitch-faint"></div>
+        <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-snitch-warm animate-spin"></div>
+      </div>
+    </div>
+  );
+};
 
-
-const Loading = () =>{
-    return(
-        <div className="flex items-center justify-center">
-            <p className="font-[family-name:var(--font-sans)] text-xs tracking-[0.15em]
-                          uppercase text-[#B5ADA3]">
-                Loading...
-            </p>
-        </div>
-    )
-}
-
-
-export default Loading
+export default Loading;

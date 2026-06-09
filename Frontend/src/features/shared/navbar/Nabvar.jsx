@@ -48,20 +48,8 @@ const Navbar = () => {
           
            <Brandname />
 
-          {/* Desktop Navigation or Search */}
-          {!isSearchOpen ? (
-            <div className="hidden md:flex items-center gap-8">
-              <Link
-                to="/collections"
-                className="text-sm font-medium text-[#B5ADA3] hover:text-[#C9A96E] relative group transition-colors duration-200"
-              >
-                COLLECTIONS
-                <span className="absolute bottom-[-2px] left-0 w-0 h-0.5  bg-[#C9A96E] group-hover:w-full transition-all duration-500"></span>
-              </Link>
-             
-              
-            </div>
-          ) : (
+          
+          { isSearchOpen &&  (
             <div className=" absolute top-14 z-50 left-0 w-[90%] bg-white md:bg-transparent px-4 sm:px-6 lg:px-8 md:static flex items-center flex-1 ml-8 gap-4 h-16 " onClick={(e) => e.stopPropagation()}>
 
               <Icons.Search size={20} className="text-[#C9A96E] flex-shrink-0" />
@@ -110,7 +98,13 @@ const Navbar = () => {
             </button>}
 
 
-
+            <Link
+              to="/"
+              className="p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110 relative group hidden sm:block"
+              aria-label="home"
+            >
+              <Icons.Home size={20} className="text-[#C9A96E]" />
+            </Link>
 
 
 

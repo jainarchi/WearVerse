@@ -1,24 +1,22 @@
-import React from 'react'
-import Sidebar from '../components/Sidebar.jsx'
-import { Outlet } from 'react-router-dom'
-import SellerNavbar from '../components/SellerNavbar.jsx'
+import React from "react";
+import Sidebar from "../components/Sidebar.jsx";
+import { Outlet } from "react-router-dom";
+import SellerNavbar from "../components/SellerNavbar.jsx";
 
 const DashboardLayout = () => {
   return (
-    <div className='h-full w-full flex '>
+    <div className="h-full w-full flex ">
+      <Sidebar />
 
-        <Sidebar/>
-       
+      <div className="flex-1">
+        <div className="sticky top-0 z-20">
+          <SellerNavbar />
+        </div>
 
-      <div className='flex-1' >
-        <SellerNavbar />
-        <Outlet/>
-        
+        <Outlet />
       </div>
-
-      
     </div>
-  )
-}
+  );
+};
 
-export default DashboardLayout
+export default DashboardLayout;

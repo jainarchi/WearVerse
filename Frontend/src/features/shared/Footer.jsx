@@ -20,20 +20,7 @@ const Footer = () => {
             <p className="font-[family-name:var(--font-sans)] text-sm leading-relaxed text-[#9b9387] mb-6">
               Curating the essentials of modern heritage. A sanctuary for the discerning collector where textiles meet architectural precision.
             </p>
-            {/* Social Links */}
-            <div className="flex gap-4">
-              {['INSTAGRAM', 'TWITTER', 'VIMEO'].map((social, idx) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="text-xs font-medium text-[#9b9387] hover:text-[#C9A96E] transition-all duration-300 hover:translate-y-[-2px] relative group"
-                  style={{ animationDelay: `${idx * 100}ms` }}
-                >
-                  {social}
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-[#C9A96E] group-hover:w-full transition-all duration-300"></span>
-                </a>
-              ))}
-            </div>
+            
           </div>
 
           {/* Collections */}
@@ -89,7 +76,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="border-t border-[#C9A96E]/20 pt-12 pb-8">
+        {/* <div className="border-t border-[#C9A96E]/20 pt-12 pb-8">
           <div className="max-w-md">
             <h3 className="text-sm font-semibold text-[#C9A96E] mb-4 tracking-[0.1em] uppercase">
               STAY INFORMED
@@ -111,7 +98,7 @@ const Footer = () => {
               </button>
             </form>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom Footer */}
@@ -120,17 +107,7 @@ const Footer = () => {
           <p className="font-[family-name:var(--font-sans)] text-xs tracking-[0.08em] text-[#6b645a]">
             © {currentYear} SNITCH STUDIO. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-6 text-xs text-[#6b645a]">
-            <a href="#" className="hover:text-[#C9A96E] transition-colors duration-300">
-              NEW YORK
-            </a>
-            <a href="#" className="hover:text-[#C9A96E] transition-colors duration-300">
-              PARIS
-            </a>
-            <a href="#" className="hover:text-[#C9A96E] transition-colors duration-300">
-              TOKYO
-            </a>
-          </div>
+       
         </div>
       </div>
 

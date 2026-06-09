@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import Icons from '../Icons/Icons'
 import Brandname from '../Brandname'
+import { useSelector , useDispatch } from 'react-redux'
+import { setAllProducts } from '../../products/state/products.slice'
+
+
+
+
 const SellerNavbar
  = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const allProducts = useSelector((s) => s.products.allProducts)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
 
   // Close search on ESC key or click outside
@@ -32,12 +40,15 @@ const SellerNavbar
 
   const handleSearch = (e) => {
     e.preventDefault()
-    if (searchQuery.trim()) {
-      navigate(`/products?search=${searchQuery}`)
-      setSearchQuery('')
-      setIsSearchOpen(false)
+     const list = [...allProducts]
+
+     const filtered = list.filter((p) =>{
+          return p.title.toLowerCase().includes(searchQuery.toLowerCase())
+     })
+     
+     // set in temp variable and show in home page 
     }
-  }
+  
 
   return (
     <nav className="sticky top-0 z-50 bg-gradient-to-b from-[#1a1815] to-[#0f0d0a] border-b border-[#C9A96E]/20 shadow-lg">

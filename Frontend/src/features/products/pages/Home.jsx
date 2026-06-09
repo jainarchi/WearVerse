@@ -45,8 +45,6 @@ const Home = () => {
 
 
   if (loading) {
-      console.log("LOADING COMPONENT RENDERED ");
-
     return (<Loading />)
   }
 

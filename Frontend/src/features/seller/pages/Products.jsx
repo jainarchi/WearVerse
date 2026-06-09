@@ -109,7 +109,7 @@ const Products = () => {
     if (query.trim()) {
       const q = query.toLowerCase();
       list = list.filter(p =>
-        p.name?.toLowerCase().includes(q) ||
+        p.title?.toLowerCase().includes(q) ||
         p.category?.toLowerCase().includes(q)
       );
     }
@@ -193,7 +193,7 @@ const Products = () => {
       </header>
 
       {/*  TOOLBAR — search + sort + view  */}
-      <div className="sticky top-0 z-20 bg-snitch-cream/95 backdrop-blur-md border-b border-snitch-border/15 px-5 sm:px-8 md:px-10 xl:px-14 py-3.5">
+      <div className="bg-snitch-cream/95 backdrop-blur-md border-b border-snitch-border/15 px-5 sm:px-8 md:px-10 xl:px-14 py-3.5">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
 
           {/* Search */}
