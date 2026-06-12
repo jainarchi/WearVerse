@@ -23,6 +23,9 @@ if(! process.env.IMAGE_KIT_PRIVATE_KEY){
     throw new Error('Image kit private key not defined in environment variables')
 }
 
+if( ! process.env.REDIS_HOST || ! process.env.REDIS_PORT || ! process.env.REDIS_PASSWORD){
+    throw new Error('Redis configuration not defined in environment variables')
+}
 
 
 
@@ -36,5 +39,8 @@ export const config = {
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     IMAGE_KIT_PRIVATE_KEY:process.env.IMAGE_KIT_PRIVATE_KEY,
     RAZORPAY_KEY_ID:process.env.RAZORPAY_KEY_ID || null ,
-    RAZORPAY_KEY_SECRET:process.env.RAZORPAY_KEY_SECRET || null
+    RAZORPAY_KEY_SECRET:process.env.RAZORPAY_KEY_SECRET || null,
+    REDIS_HOST: process.env.REDIS_HOST,
+    REDIS_PORT: process.env.REDIS_PORT,
+    REDIS_PASSWORD: process.env.REDIS_PASSWORD,
 }

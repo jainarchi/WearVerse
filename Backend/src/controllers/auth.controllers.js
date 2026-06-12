@@ -1,7 +1,7 @@
 import userModel from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import { config } from "../config/config.js";
-
+import redis from "../config/cache.js";
 
 
 const tokenInResponse = (user, res, message) => {
@@ -28,6 +28,8 @@ const tokenInResponse = (user, res, message) => {
     },
   });
 };
+
+
 
 /**
  * @route POST /api/auth/register
@@ -65,6 +67,8 @@ const registerUser = async (req, res) => {
     });
   }
 };
+
+
 
 /**
  *  @route POST /api/auth/login
@@ -106,13 +110,15 @@ const loginUser = async (req, res) => {
   }
 };
 
+
+
+
 /**
  * continue with google login or register logic
  */
-
 const googleCallback = async (req, res) => {
   const userDetails = req.user;
-  // console.log( 'user details :' , userDetails)
+  console.log( 'user details :' , userDetails)
 
   const { id, displayName, emails } = userDetails;
 
@@ -154,6 +160,7 @@ const googleCallback = async (req, res) => {
 
 
 
+
 const getMe = async (req, res) => {
   const userId = req.user.id;
 
@@ -173,34 +180,37 @@ const getMe = async (req, res) => {
 };
 
 
-const logout = async (req , res) =>{
 
-    try{
-        res.clearCookie("token", {
-            httpOnly: true,
-            sameSite: config.NODE_ENV === "production" ? "none" : "lax",
-            secure: config.NODE_ENV === "production",
-          });
+const logout = async (req, res) => {
+  try {
+    const token = req.cookies.token;
 
-        res.status(200).json({
-            message : "Logout successful"
-        })
+    await redis.set(
+      `ecommerce:blacklist:${token}`,
+      "logged_out",
+      "EX",
+      7 * 24 * 60 * 60,
+    );
+    
 
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: config.NODE_ENV === "production" ? "none" : "lax",
+      secure: config.NODE_ENV === "production",
+    });
 
-    }catch(err){
-        console.log(err);
-        res.status(500).json({
-            message : "Server error"
-        })
-    }
-}
-
-
-
-export {
-  registerUser,
-  loginUser,
-  googleCallback,
-  getMe,
-
+    res.status(200).json({
+      message: "Logout successful",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
 };
+
+
+
+
+export { registerUser, loginUser, googleCallback, getMe , logout};
