@@ -282,10 +282,12 @@ export default function Profile() {
             <p className="text-sm text-[#7A6E63] tracking-wide">
               {user?.email}
             </p>
-
-            <p className="text-sm text-[#7A6E63] tracking-wide">
+             
+             {user?.contact && 
+             <p className="text-sm text-[#7A6E63] tracking-wide">
               +91 {user?.contact}
-            </p>
+            </p>}
+            
           </div>
         </div>
       </header>

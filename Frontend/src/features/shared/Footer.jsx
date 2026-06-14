@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gradient-to-b from-[#1a1815] to-[#0f0d0a] text-[#B5ADA3] border-t border-[#C9A96E]/20 ">
+    <footer className="bg-[#f8f2ec] border-t border-[#C9A96E]/20 ">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12">
@@ -17,7 +17,7 @@ const Footer = () => {
             <div className="mb-6 group cursor-pointer">
                <Brandname />
             </div>
-            <p className="font-[family-name:var(--font-sans)] text-sm leading-relaxed text-[#9b9387] mb-6">
+            <p className="font-[family-name:var(--font-sans)] text-[12px] leading-relaxed text-[#9b9387] mb-6">
               Curating the essentials of modern heritage. A sanctuary for the discerning collector where textiles meet architectural precision.
             </p>
             
@@ -25,7 +25,7 @@ const Footer = () => {
 
           {/* Collections */}
           <div className="animate-fade-in" style={{ animationDelay: '100ms' }}>
-            <h3 className="text-sm font-semibold text-[#C9A96E] mb-6 tracking-[0.1em] uppercase">
+            <h3 className="text-sm font-semibold text-black mb-6 tracking-[0.1em] uppercase">
               COLLECTIONS
             </h3>
             <ul className="space-y-3">
@@ -42,7 +42,7 @@ const Footer = () => {
 
           {/* Company */}
           <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-            <h3 className="text-sm font-semibold text-[#C9A96E] mb-6 tracking-[0.1em] uppercase">
+            <h3 className="text-sm font-semibold text-black mb-6 tracking-[0.1em] uppercase">
               COMPANY
             </h3>
             <ul className="space-y-3">
@@ -59,7 +59,7 @@ const Footer = () => {
 
           {/* Assistance */}
           <div className="animate-fade-in" style={{ animationDelay: '300ms' }}>
-            <h3 className="text-sm font-semibold text-[#C9A96E] mb-6 tracking-[0.1em] uppercase">
+            <h3 className="text-sm font-semibold text-black mb-6 tracking-[0.1em] uppercase">
               ASSISTANCE
             </h3>
             <ul className="space-y-3">
@@ -102,10 +102,10 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-[#C9A96E]/20 bg-[#0f0d0a]/50 backdrop-blur-sm">
+      <div className=" bg-[#f8f2ec] backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-[family-name:var(--font-sans)] text-xs tracking-[0.08em] text-[#6b645a]">
-            © {currentYear} SNITCH STUDIO. ALL RIGHTS RESERVED.
+            © {currentYear} WEARVERSE STUDIO. ALL RIGHTS RESERVED.
           </p>
        
         </div>

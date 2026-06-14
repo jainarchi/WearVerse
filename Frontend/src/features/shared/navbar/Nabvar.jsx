@@ -114,9 +114,9 @@ const Navbar = () => {
               aria-label="Wishlist"
             >
               <Icons.Heart size={20} className="text-[#C9A96E]" />
-              <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              {/* <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 0
-              </span>
+              </span> */}
             </Link>
 
 
@@ -127,9 +127,9 @@ const Navbar = () => {
               aria-label="Cart"
             >
               <Icons.Order size={20} className="text-[#C9A96E]" />
-              <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              {/* <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 0
-              </span>
+              </span> */}
             </Link>
 
              <Link
@@ -138,9 +138,9 @@ const Navbar = () => {
               aria-label="Cart"
             >
               <Icons.Cart size={20} className="text-[#C9A96E]" />
-              <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              {/* <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 0
-              </span>
+              </span> */}
             </Link>
 
 

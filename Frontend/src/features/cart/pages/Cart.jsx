@@ -248,7 +248,7 @@ const Cart = () => {
                   </h2>
 
                   {!selectedAddressId && (
-                    <p className="text-[11px] text-red-400 mb-3">No address selected</p>
+                    <p className="text-[11px] text-red-400 mb-3">No address selected. To add new address go to Your profile.</p>
                   )}
 
 

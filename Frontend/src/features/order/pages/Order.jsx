@@ -67,7 +67,7 @@ const Order = () => {
               text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-[#C9A96E]
               font-[family-name:var(--font-sans)] font-medium mb-4 sm:mb-5
             ">
-              Account&nbsp;/&nbsp;History
+              Account&nbsp;/&nbsp;Orders
             </p>
 
             {/* Main title */}

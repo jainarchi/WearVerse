@@ -2,34 +2,49 @@ import React, { useState } from 'react';
 import { useAuth } from '../hook/useAuth';
 import { useNavigate } from 'react-router-dom';
 import ContinueWithGoogleButton from '../components/ContinueWithGoogleButton.jsx';
-
+import {toast} from 'react-toastify'
+import { loginSchema } from '../validation/auth.schema.js';
 
 const Login = () => {
-  const {handleLogin} = useAuth()
-  const navigate = useNavigate()
+    const { handleLogin } = useAuth()
+    const navigate = useNavigate()
 
 
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
 
-  const handleChange = (e) => {
-   setFormData({...formData , [e.target.name] : e.target.value})
-  };
-
-  // zod validation remains
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await handleLogin(formData)
-    navigate('/' ,  {replace: true})
-    console.log('Login Submitted', formData);
-  };
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    };
 
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-   return (
+        const validation = loginSchema.safeParse(formData);
+
+        if (!validation.success) {
+            toast.error(validation.error.issues[0].message);
+            return;
+        }
+
+        const result = await handleLogin(formData);
+
+        if(result.success){
+            navigate('/', { replace: true })
+        }
+        else {
+            toast.error(result.message)
+        }
+        
+        console.log('Login Submitted', formData);
+    };
+
+
+
+    return (
         <>
             {/* Google Fonts */}
             <link
@@ -44,8 +59,8 @@ const Login = () => {
                 {/*  LEFT: Editorial Image Panel  */}
                 <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden" style={{ backgroundColor: '#f5f3f0' }}>
                     <img
-                        src="/snitch_editorial_warm.png"
-                        alt="Snitch Fashion Editorial"
+                        src="https://i.pinimg.com/736x/d0/0b/53/d00b53bcfa8e62f5dd488f9388ae1bf9.jpg"
+                        alt="WearVerse Fashion Editorial"
                         className="absolute inset-0 w-full h-full object-cover object-top"
                         style={{ filter: 'brightness(0.97)' }}
                     />
@@ -60,7 +75,7 @@ const Login = () => {
                             className="text-sm font-medium tracking-[0.35em] uppercase"
                             style={{ fontFamily: "'Cormorant Garamond', serif", color: '#C9A96E', letterSpacing: '0.35em' }}
                         >
-                            Snitch.
+                            WearVerse
                         </span>
                         {/* Editorial Headline */}
                         <div>
@@ -80,18 +95,18 @@ const Login = () => {
 
                 {/* ── RIGHT: Form Panel ── */}
                 <div
-                    className="w-full lg:w-1/2 flex items-center justify-center min-h-screen px-8 sm:px-14 lg:px-20 py-16"
+                    className="w-full lg:w-1/2 flex items-center justify-center min-h-screen px-8 sm:px-10 lg:px-20 py-10"
                     style={{ backgroundColor: '#fbf9f6' }}
                 >
                     <div className="w-full max-w-sm">
 
                         {/* Mobile brand mark */}
-                        <div className="lg:hidden mb-14">
+                        <div className="lg:hidden mb-10">
                             <span
                                 className="text-sm tracking-[0.35em] uppercase"
                                 style={{ fontFamily: "'Cormorant Garamond', serif", color: '#C9A96E' }}
                             >
-                                Snitch.
+                                WearVerse
                             </span>
                         </div>
 
@@ -101,7 +116,7 @@ const Login = () => {
                                 className="text-[10px] uppercase tracking-[0.22em] mb-4 font-medium"
                                 style={{ color: '#C9A96E' }}
                             >
-                                Sign in to Snitch
+                                Sign in to WearVerse
                             </p>
                             <h1
                                 className="text-[2.6rem] xl:text-5xl font-light leading-[1.1]"
@@ -210,7 +225,7 @@ const Login = () => {
                             </div>
 
                             {/* Google SSO */}
-                            <ContinueWithGoogleButton/>
+                            <ContinueWithGoogleButton />
 
                             {/* Footer Link */}
                             <p className="text-center text-[11px]" style={{ color: '#B5ADA3' }}>

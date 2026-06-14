@@ -12,6 +12,8 @@ export const useAuth = () => {
     contact,
     isSeller,
   }) => {
+
+    try{
     const data = await register({
       fullname,
       email,
@@ -20,12 +22,49 @@ export const useAuth = () => {
       isSeller,
     });
     dispatch(setUser(data.user));
+    return {
+      success: true
+    }
+    
+
+  }
+  catch(err){
+    return {
+      success : false ,
+      message : err?.response?.data?.message || "Something went wrong"
+    }
+  }
   };
 
+
+
+
+
+
   const handleLogin = async ({ email, password }) => {
-    const data = await login({ email, password });
-    dispatch(setUser(data.user));
+
+
+    try{
+       const data = await login({ email, password });
+       dispatch(setUser(data.user));
+       return {
+        success: true
+       }
+
+    }
+    catch(err){
+      return {
+        success : false ,
+        message : err?.response?.data?.message || "Something went wrong"
+      }
+    }
   };
+
+
+
+
+
+
 
   const handleGetMe = async () => {
     try {
@@ -41,7 +80,7 @@ export const useAuth = () => {
       console.log(err);
       return {
         success: false,
-        message: err.response.data.message || "Something went wrong",
+        message : err?.response?.data?.message || "Something went wrong"
       };
     } finally {
       dispatch(setLoading(false));
@@ -60,7 +99,8 @@ export const useAuth = () => {
       console.log(err);
       return {
         success: false,
-        message: err.response.data.message || "Something went wrong",
+        message : err?.response?.data?.message || "Something went wrong"
+
       };
     }
   };

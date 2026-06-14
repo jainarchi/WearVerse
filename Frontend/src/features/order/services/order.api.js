@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getSellerSubOrders } from '../../../../../Backend/src/controllers/seller.controllers';
 
 
 const orderApi = axios.create({
