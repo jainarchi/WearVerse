@@ -145,7 +145,7 @@ const googleCallback = async (req, res) => {
     secure: config.NODE_ENV === "production",
   });
 
-  res.redirect("http://localhost:5173/");
+  res.redirect(config.CLIENT_URL);
 
   res.status(200).json({
     message: "Login successful",

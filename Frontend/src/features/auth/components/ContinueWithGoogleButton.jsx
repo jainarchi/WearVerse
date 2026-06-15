@@ -3,7 +3,7 @@ import React from 'react'
 const ContinueWithGoogleButton = () => {
   return (
     <a 
-      href='/api/auth/google' 
+      href={`${import.meta.env.VITE_API_URL}/api/auth/google`}
       className="relative flex w-full items-center justify-center gap-4 bg-white border border-[#747775] rounded hover:bg-[#F8F9FA] active:bg-[#E8EAED] transition-colors focus:outline-none focus:ring-2 focus:ring-[#4285F4] focus:ring-offset-1 h-10 px-3 cursor-pointer"
     >
       <div >
