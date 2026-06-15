@@ -27,7 +27,13 @@ if( ! process.env.REDIS_HOST || ! process.env.REDIS_PORT || ! process.env.REDIS_
     throw new Error('Redis configuration not defined in environment variables')
 }
 
+if( ! process.env.RAZORPAY_KEY_ID && ! process.env.RAZORPAY_KEY_SECRET){
+    throw new Error('Razorpay key secret not defined in environment variables')
+}
 
+if(! process.env.CLIENT_URL){
+    throw new Error('Client URL not defined in environment variables')
+}
 
 
 export const config = {
@@ -43,4 +49,5 @@ export const config = {
     REDIS_HOST: process.env.REDIS_HOST,
     REDIS_PORT: process.env.REDIS_PORT,
     REDIS_PASSWORD: process.env.REDIS_PASSWORD,
+    CLIENT_URL: process.env.CLIENT_URL
 }

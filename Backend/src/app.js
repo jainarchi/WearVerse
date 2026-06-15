@@ -12,13 +12,13 @@ const app = express()
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
-// app.use(cors(
-//     {
-//         origin : 'http://localhost:5174' ,
-//         credentials : true,
-//         methods :["POST" , "GET" , "PUT" , "DELETE"]
-//     }
-// ))
+app.use(cors(
+    {
+        origin : config.CLIENT_URL ,
+        credentials : true,
+        methods :["POST" , "GET" , "PUT" , "DELETE" , "PATCH"]
+    }
+))
 
 
 

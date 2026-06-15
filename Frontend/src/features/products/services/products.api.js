@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const productApi = axios.create({
-    baseURL : '/api/products',
+    baseURL : `${import.meta.env.VITE_API_URL}/api/products`,
     withCredentials : true
 })
 

@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const sellerApi = axios.create({
-    baseURL : '/api/seller',
+    baseURL : `${import.meta.env.VITE_API_URL}/api/seller`,
     withCredentials : true
 })
 
