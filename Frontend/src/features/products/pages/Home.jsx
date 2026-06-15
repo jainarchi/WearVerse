@@ -16,14 +16,6 @@ const Hero = () => (
                
   >
     <div className="max-w-4xl">
-      <span
-        className="inline-block mb-5
-                   text-[11px] font-medium
-                   tracking-[0.25em] uppercase
-                   text-[#C9A96E]"
-      >
-        WearVerse 2026
-      </span>
 
       <h1
         className="font-[family-name:var(--font-serif)] font-light

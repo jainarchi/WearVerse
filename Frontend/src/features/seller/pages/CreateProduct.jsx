@@ -18,7 +18,7 @@ const CreateProduct = () => {
         description: '',
         priceAmount: '',
         priceCurrency: 'INR',
-        category : ""
+        category: ""
     });
     const [images, setImages] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,7 +45,7 @@ const CreateProduct = () => {
                 priceAmount: formData.priceAmount,
                 priceCurrency: formData.priceCurrency,
                 color: variantData.color,
-                category : formData.category,
+                category: formData.category,
                 sizes,
                 images
 
@@ -226,8 +226,8 @@ const CreateProduct = () => {
                                                 onBlur={handleBlur}
                                             />
                                         </div>
-                                      
-                                        
+
+
                                     </div>
                                 </div>
 
