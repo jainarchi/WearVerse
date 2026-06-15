@@ -1,6 +1,6 @@
 import React from 'react';
 import Loading from '../../shared/Loading';
-import Icons from '../../shared/Icons/Icons';
+import Icons from '../../shared/icons/Icons';
 
 const CartItem = ({ item, removeItem , increaseQuantity , decreaseQuantity}) => {
   if (!item) return null;
