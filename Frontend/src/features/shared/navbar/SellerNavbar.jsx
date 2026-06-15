@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import Icons from '../Icons/Icons'
+import Icons from '../icons/Icons'
 import Brandname from '../Brandname'
 import { useSelector , useDispatch } from 'react-redux'
-import { setAllProducts } from '../../products/state/products.slice'
 
 
 
