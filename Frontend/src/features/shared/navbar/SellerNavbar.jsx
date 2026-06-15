@@ -46,7 +46,6 @@ const SellerNavbar
           return p.title.toLowerCase().includes(searchQuery.toLowerCase())
      })
      
-     // set in temp variable and show in home page 
     }
   
 
@@ -58,7 +57,7 @@ const SellerNavbar
 
          <Brandname />
 
-          {/* Desktop Navigation or Search */}
+         
           {!isSearchOpen ? (
             <div className="hidden md:flex items-center gap-8">
               <Link
@@ -122,15 +121,6 @@ const SellerNavbar
           {/* Right Side Icons & Search */}
           <div className="flex items-center gap-4 sm:gap-6" onClick={(e) => e.stopPropagation()}>
 
-            {/* Search Icon Button */}
-            {!isSearchOpen && <button
-              onClick={() => setIsSearchOpen(true)}
-              className="p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110"
-              aria-label="Search"
-            >
-              <Icons.Search size={20} className="text-[#C9A96E]" />
-            </button>}
-
 
 
             {/* Profile */}
@@ -159,7 +149,7 @@ const SellerNavbar
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-[#C9A96E]/20 py-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="md:hidden absolute bg-snitch-charcoal w-full border-t border-[#C9A96E]/20 py-4 animate-in fade-in slide-in-from-top-2 duration-200 left-0">
             <div className="flex flex-col gap-4">
               <Link
                 to="/collections"

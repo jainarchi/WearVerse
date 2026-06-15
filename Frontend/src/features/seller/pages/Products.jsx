@@ -196,27 +196,7 @@ const Products = () => {
       <div className="bg-snitch-cream/95 backdrop-blur-md border-b border-snitch-border/15 px-5 sm:px-8 md:px-10 xl:px-14 py-3.5">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
 
-          {/* Search */}
-          <div className="relative flex-1 max-w-sm">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-snitch-faint pointer-events-none">
-              <Icons.Search />
-            </span>
-            <input
-              type="text"
-              placeholder="Search by name or category…"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              className="w-full bg-snitch-card border border-snitch-border/30 pl-9 pr-8 py-2.5 font-body text-[0.82rem] text-snitch-charcoal placeholder:text-snitch-faint outline-none focus:border-snitch-gold transition-colors duration-300"
-            />
-            {query && (
-              <button
-                onClick={() => setQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-snitch-faint hover:text-snitch-charcoal bg-transparent border-none cursor-pointer p-0"
-              >
-                <XIcon />
-              </button>
-            )}
-          </div>
+        
 
           {/* Sort */}
           <select

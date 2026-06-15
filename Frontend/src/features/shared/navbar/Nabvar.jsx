@@ -88,14 +88,13 @@ const Navbar = () => {
           {/* Right Side Icons & Search */}
           <div className="flex items-center gap-4 sm:gap-6" onClick={(e) => e.stopPropagation()}>
 
-            {/* Search Icon Button */}
-            {!isSearchOpen && <button
+            {/* {!isSearchOpen && <button
               onClick={() => setIsSearchOpen(true)}
               className="p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110"
               aria-label="Search"
             >
               <Icons.Search size={20} className="text-[#C9A96E]" />
-            </button>}
+            </button>} */}
 
 
             <Link
@@ -114,9 +113,6 @@ const Navbar = () => {
               aria-label="Wishlist"
             >
               <Icons.Heart size={20} className="text-[#C9A96E]" />
-              {/* <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                0
-              </span> */}
             </Link>
 
 
@@ -127,9 +123,6 @@ const Navbar = () => {
               aria-label="Cart"
             >
               <Icons.Order size={20} className="text-[#C9A96E]" />
-              {/* <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                0
-              </span> */}
             </Link>
 
              <Link
@@ -138,9 +131,6 @@ const Navbar = () => {
               aria-label="Cart"
             >
               <Icons.Cart size={20} className="text-[#C9A96E]" />
-              {/* <span className="absolute -top-1 -right-1 bg-[#C9A96E] text-[#1a1815] text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                0
-              </span> */}
             </Link>
 
 
@@ -171,7 +161,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-[#C9A96E]/20 py-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="md:hidden absolute right-0  w-full bg-snitch-charcoal border-t border-[#C9A96E]/20 py-4 animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col">
              
                <Link

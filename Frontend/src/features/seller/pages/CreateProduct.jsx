@@ -209,7 +209,7 @@ const CreateProduct = () => {
                                     <div className="flex gap-5 items-end">
                                         {/* Amount */}
                                         <div className="flex flex-col gap-1 flex-[3]">
-                                            <span className="text-[9px] uppercase tracking-[0.18em]" style={{ color: '#B5ADA3' }}>Amount</span>
+                                            <span className="text-[9px] uppercase tracking-[0.18em]" style={{ color: '#B5ADA3' }}>Amount (INR)</span>
                                             <input
                                                 id="cp-priceAmount"
                                                 type="number"
@@ -226,24 +226,8 @@ const CreateProduct = () => {
                                                 onBlur={handleBlur}
                                             />
                                         </div>
-                                        {/* Currency */}
-                                        <div className="flex flex-col gap-1 flex-[1]">
-                                            <span className="text-[9px] uppercase tracking-[0.18em]" style={{ color: '#B5ADA3' }}>Currency</span>
-                                            <select
-                                                id="cp-priceCurrency"
-                                                name="priceCurrency"
-                                                value={formData.priceCurrency}
-                                                onChange={handleChange}
-                                                className="w-full bg-transparent outline-none py-4 text-sm cursor-pointer appearance-none transition-colors duration-300"
-                                                style={inputStyle}
-                                                onFocus={handleFocus}
-                                                onBlur={handleBlur}
-                                            >
-                                                {CURRENCIES.map(c => (
-                                                    <option key={c} value={c} style={{ backgroundColor: '#fbf9f6', color: '#1b1c1a' }}>{c}</option>
-                                                ))}
-                                            </select>
-                                        </div>
+                                      
+                                        
                                     </div>
                                 </div>
 

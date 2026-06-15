@@ -11,7 +11,7 @@ const ProductCard = ({ product, onClick, isPriority }) => {
     >
       {/* ── Image ── */}
       <div className="relative overflow-hidden bg-[#eae8e5] mb-4 sm:mb-5"
-           style={{ aspectRatio: '6/7' }}>
+           style={{ aspectRatio: '3/4' }}>
         {product?.image ? (
           <img
             src={product.image}

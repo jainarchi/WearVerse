@@ -106,7 +106,7 @@ const SellerProductCard = ({ product, onDelete, isDeleting = false , alignment =
       {/* ── Image area ── */}
       <div
         className="relative overflow-hidden bg-snitch-card cursor-pointer"
-        style={{ aspectRatio: '4/3' }}
+        style={{ aspectRatio: '3/4' }}
         onMouseEnter={() => setImgHovered(true)}
         onMouseLeave={() => setImgHovered(false)}
         onClick={handleView}
