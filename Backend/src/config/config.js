@@ -35,6 +35,10 @@ if(! process.env.CLIENT_URL){
     throw new Error('Client URL not defined in environment variables')
 }
 
+if(! process.env.GOOGLE_CALLBACK_URL){
+    throw new Error('Google callback URL not defined in environment variables')
+}
+
 
 export const config = {
     PORT: process.env.PORT || 3000,
@@ -43,6 +47,7 @@ export const config = {
     JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
     IMAGE_KIT_PRIVATE_KEY:process.env.IMAGE_KIT_PRIVATE_KEY,
     RAZORPAY_KEY_ID:process.env.RAZORPAY_KEY_ID || null ,
     RAZORPAY_KEY_SECRET:process.env.RAZORPAY_KEY_SECRET || null,
