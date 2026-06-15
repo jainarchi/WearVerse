@@ -1,0 +1,17 @@
+export const CATEGORIES = [
+  "T-Shirt",
+  "Hoodie",
+  "Shirt",
+  "Jeans",
+  "Jacket",
+  "Shrug",
+  "Kurta",
+  "Saree",
+  "Lehenga",
+  "Blouse",
+  "Skirt",
+  "Shorts",
+  "Track Pants",
+  "Sweatpants",
+  "Other",
+];

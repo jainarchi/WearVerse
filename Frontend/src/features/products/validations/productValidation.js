@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CATEGORIES } from "../constants/categories.js";
 
 export const variantSchema = z.object({
 
@@ -65,7 +66,7 @@ export const variantSchema = z.object({
 
 
 
-export const createProductSchema= z.object({
+export const createProductSchema = z.object({
 
     title: z
         .string()
@@ -94,14 +95,25 @@ export const createProductSchema= z.object({
         .min(1, "Currency is required")
         .min(3, "Currency must be at least 3 characters"),
 
-        color : z
+    color: z
         .string()
         .trim()
         .min(1, "Color is required")
         .min(3, "Color must be at least 3 characters"),
 
+  category: z
+  .string()
+  .trim()
+  .min(1, "Category is required")
+  .refine(
+    (value) => CATEGORIES.includes(value),
+    {
+      message: "Invalid category",
+    }
+  ),
 
-        sizes: z
+  
+    sizes: z
         .array(
             z.object({
                 size: z

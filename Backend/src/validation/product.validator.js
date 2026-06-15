@@ -1,5 +1,6 @@
 import { body, param, validationResult } from "express-validator";
 import mongoose from "mongoose";
+import { CATEGORIES } from "../constants/categories.js";
 
 export const validateRequest = (req, res, next) => {
   const errors = validationResult(req);
@@ -88,6 +89,11 @@ export const validateProduct = [
     .trim()
     .notEmpty().withMessage("Product description is required")
     .isLength({ min: 10 }).withMessage("Product description must be at least 10 characters long"),
+
+    body("category")
+      .trim()
+      .notEmpty().withMessage("Product category is required")
+      .isIn(CATEGORIES).withMessage("Invalid product category"),
 
   body("priceAmount")
     .notEmpty().withMessage("Product price is required")

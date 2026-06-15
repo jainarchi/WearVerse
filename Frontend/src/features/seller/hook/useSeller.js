@@ -44,9 +44,7 @@ export const useSeller = () => {
         try {
             const data = await getAllProductsBySeller();
             dispatch(setSellerProducts(data.products));
-            console.log(data.message);
         } catch (err) {
-            console.log(err);
             return {
                 status: false,
                 message: err.response.data.message || "Something went wrong",
@@ -63,7 +61,6 @@ export const useSeller = () => {
             dispatch(addSellerProduct(data.product));
             return data.product;
         } catch (err) {
-            console.log(err);
             return {
                 status: false,
                 message: err.response.data.message || "Something went wrong",
@@ -78,10 +75,8 @@ export const useSeller = () => {
     const handleDeleteProduct = async (productId) => {
         try {
             const data = await deleteProduct(productId);
-            console.log(data.message);
             dispatch(removeSellerProduct(productId));
         } catch (err) {
-            console.log(err);
             return {
                 status: false,
                 message: err.response.data.message || "Something went wrong",
@@ -96,9 +91,7 @@ export const useSeller = () => {
     const handleAddProductVariant = async (productId, formData) => {
         try {
             const data = await addProductVariant(productId, formData);
-            console.log(data.product);
         } catch (err) {
-            console.log(err);
             return {
                 status: false,
                 message: err.response.data.message || "Something went wrong",

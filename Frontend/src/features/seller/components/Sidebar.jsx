@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Icons from '../../shared/icons/Icons';
 import {useAuth} from '../../auth/hook/useAuth';
+import Brandname from '../../shared/Brandname';
 
 const NAV_ITEMS = [
   {label: "Collection" , to: '/' , icon : Icons.Home},
@@ -51,10 +52,8 @@ const SidebarContent = ({ onClose }) => {
 
       {/*  Logo block  */}
       <div className="px-6 py-5 shrink-0 border-b border-snitch-gold/20">
-        <span className="font-serif text-xl font-bold tracking-[0.14em] uppercase text-snitch-gold">
-          Snitch.
-        </span>
-        <p className="font-label text-[0.55rem] tracking-[0.18em] uppercase text-snitch-warm mt-0.5 m-0">
+       <Brandname />
+        <p className="font-label text-[0.55rem] tracking-[0.18em] uppercase text-snitch-warm mt-2 m-0">
           Seller Dashboard
         </p>
       </div>

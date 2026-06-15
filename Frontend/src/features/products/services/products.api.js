@@ -8,8 +8,6 @@ const productApi = axios.create({
 
 
 
-
-
 // get all products to show on home page
 export async function getAllProducts() {
     const response = await productApi.get('/')

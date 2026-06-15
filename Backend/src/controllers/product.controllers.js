@@ -37,6 +37,9 @@ const getProductDetails = async (req, res) => {
 const getAllProducts = async (req, res) => {
   try {
     const products = await productModel.aggregate([
+       {
+    $sort: { createdAt: -1 }
+  },
       {
         $project: {
           title: 1,

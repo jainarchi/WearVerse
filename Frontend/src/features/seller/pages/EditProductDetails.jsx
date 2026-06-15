@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSeller } from '../hook/useSeller';
 import { variantSchema } from '../../products/validations/productValidation';
@@ -10,35 +10,15 @@ import Add_Variant from '../../products/components/AddVariant';
 const EditProductDetails = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const { handleGetProductDetails, handleAddProductVariant } = useSeller();
+  const { handleAddProductVariant } = useSeller();
 
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-
   const [images, setImages] = useState([]);
   const [sizes, setSizes] = useState([{ size: '', stock: '' }]);
   const [variantData, setVariantData] = useState({
     color: '',
     priceAmount: '',
   });
- 
-
-  useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const data = await handleGetProductDetails(productId);
-        setProduct(data);
-      } catch (err) {
-        console.error('Failed to fetch product details', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDetails();
-  }, [productId]);
-
  
 
 
@@ -82,17 +62,6 @@ const EditProductDetails = () => {
     finally {
       setIsSubmitting(false)
     }
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#fbf9f6] flex items-center justify-center">
-        <div className="animate-pulse flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-2 border-[#C9A96E] border-t-transparent rounded-full animate-spin" />
-          <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-[#7A6E63]">Fetching Details</span>
-        </div>
-      </div>
-    );
   }
 
  

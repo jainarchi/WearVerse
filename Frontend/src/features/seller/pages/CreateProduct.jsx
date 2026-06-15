@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import ProductImageUploader from '../../products/components/ProductImageUploader.jsx';
 import AddVariant from '../../products/components/AddVariant.jsx';
 import { createProductSchema } from '../../products/validations/productValidation.js';
+import { CATEGORIES } from '../../products/constants/categories.js';
 
 const CURRENCIES = ['INR', 'USD', 'EUR', 'GBP'];
 const MAX_IMAGES = 5;
@@ -17,6 +18,7 @@ const CreateProduct = () => {
         description: '',
         priceAmount: '',
         priceCurrency: 'INR',
+        category : ""
     });
     const [images, setImages] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,6 +45,7 @@ const CreateProduct = () => {
                 priceAmount: formData.priceAmount,
                 priceCurrency: formData.priceCurrency,
                 color: variantData.color,
+                category : formData.category,
                 sizes,
                 images
 
@@ -57,6 +60,7 @@ const CreateProduct = () => {
             form_data.append('priceCurrency', paresedData.priceCurrency);
             form_data.append('color', paresedData.color);
             form_data.append('sizes', JSON.stringify(paresedData.sizes));
+            form_data.append('category', paresedData.category);
 
             images.forEach(img => form_data.append('images', img.file));
             await handleCreateProduct(form_data);
@@ -96,25 +100,6 @@ const CreateProduct = () => {
             >
                 <div className="max-w-6xl mx-auto px-8 lg:px-16 xl:px-24">
 
-                    {/*    Top Bar    */}
-                    <div className="pt-10 pb-0 flex items-center gap-5">
-                        <button
-                            onClick={() => navigate(-1)}
-                            className="text-lg transition-colors duration-200 leading-none"
-                            style={{ color: '#B5ADA3' }}
-                            aria-label="Go back"
-                            onMouseEnter={e => e.currentTarget.style.color = '#C9A96E'}
-                            onMouseLeave={e => e.currentTarget.style.color = '#B5ADA3'}
-                        >
-                            ←
-                        </button>
-                        <span
-                            className="text-xs font-medium tracking-[0.32em] uppercase"
-                            style={{ fontFamily: "'Cormorant Garamond', serif", color: '#C9A96E' }}
-                        >
-                            Snitch.
-                        </span>
-                    </div>
 
                     {/*    Page Header    */}
                     <div className="pt-4 pb-0">
@@ -180,6 +165,40 @@ const CreateProduct = () => {
                                         onFocus={handleFocus}
                                         onBlur={handleBlur}
                                     />
+                                </div>
+                                {/* Category */}
+                                <div className="flex flex-col gap-2">
+                                    <label
+                                        htmlFor="cp-category"
+                                        className="text-[10px] uppercase tracking-[0.2em] font-medium"
+                                        style={{ color: '#7A6E63' }}
+                                    >
+                                        Category
+                                    </label>
+
+                                    <select
+                                        id="cp-category"
+                                        name="category"
+                                        value={formData.category}
+                                        onChange={handleChange}
+                                        className="w-full bg-transparent outline-none py-4 text-sm cursor-pointer appearance-none transition-colors duration-300"
+                                        style={inputStyle}
+                                        onFocus={handleFocus}
+                                        onBlur={handleBlur}
+                                    >
+                                        <option value="" disabled  >Select Category</option>
+
+                                        {CATEGORIES.map((category) => (
+                                            <option
+                                                key={category}
+                                                value={category}
+                                                style={{ backgroundColor: "#fbf9f6", color: "#1b1c1a" }}
+                                                required
+                                            >
+                                                {category}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
 
                                 {/* Price */}

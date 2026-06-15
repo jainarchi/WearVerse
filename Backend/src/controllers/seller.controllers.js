@@ -7,7 +7,7 @@ import productModel from "../models/product.model.js";
 
 const addColorVariant = async ({ product, priceAmount, color, sizes, files }) => {
 
-const normalizedColor = color.toLowerCase().trim();
+  const normalizedColor = color.toLowerCase().trim();
 
   const seen = new Set(
     product.variants.map(v => `${v.color}-${v.size}`)
@@ -36,7 +36,7 @@ const normalizedColor = color.toLowerCase().trim();
     const key = `${normalizedColor}-${size}`;
 
     if (seen.has(key)) {
-          throw new Error(`Duplicate variant: ${key}`);
+      throw new Error(`Duplicate variant: ${key}`);
     }
 
     seen.add(key);
@@ -57,7 +57,7 @@ const normalizedColor = color.toLowerCase().trim();
 
 const createProduct = async (req, res) => {
   try {
-    const { title, description, priceAmount, priceCurrency, color, sizes } = req.body
+    const { title, description, priceAmount, priceCurrency, color, sizes, category } = req.body
 
 
     if (!req.files || req.files.length === 0) {
@@ -71,20 +71,22 @@ const createProduct = async (req, res) => {
       seller: req.seller.id,
       title,
       description,
+      category,
       price: {
         amount: priceAmount,
         currency: priceCurrency,
-      }
+      },
+
 
     });
 
 
     await addColorVariant({
-      product, 
-      priceAmount, 
-      color, 
-      sizes , 
-      files : req.files
+      product,
+      priceAmount,
+      color,
+      sizes,
+      files: req.files
     })
 
 
@@ -100,11 +102,11 @@ const createProduct = async (req, res) => {
   }
   catch (err) {
     if (err.code === 11000 || err.message.includes('Duplicate variant')) {
-  return res.status(400).json({
-    success: false,
-    message: "Variant already exists"
-  });
-}
+      return res.status(400).json({
+        success: false,
+        message: "Variant already exists"
+      });
+    }
     console.log(err);
     res.status(500).json({
       success: false,
@@ -166,10 +168,10 @@ const createVariants = async (req, res) => {
 
   }
   catch (err) {
-    if(err.code === 11000 || err.message.includes('Duplicate variant')){
+    if (err.code === 11000 || err.message.includes('Duplicate variant')) {
       return res.status(400).json({
-        success : false,
-        message : "Variant already exists"
+        success: false,
+        message: "Variant already exists"
       })
     }
 
@@ -261,32 +263,32 @@ const getAllProductsBySeller = async (req, res) => {
 
 const getSellerSubOrders = async (req, res) => {
 
-    const sellerId = req.seller.id;
+  const sellerId = req.seller.id;
 
-    try {
+  try {
 
-        const orders = await subOrderModel.find({ seller: sellerId })
-        .populate('user' , 'fullname email -_id')
-        .populate('order' , 'deliveryAddress -_id')
-        .select('-seller -__v')
-        .lean();
+    const orders = await subOrderModel.find({ seller: sellerId })
+      .populate('user', 'fullname email -_id')
+      .populate('order', 'deliveryAddress -_id')
+      .select('-seller -__v')
+      .lean();
 
-        res.status(200).json({
-            success: true,
-            orders
+    res.status(200).json({
+      success: true,
+      orders
 
-        })
+    })
 
 
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({
-            success: false,
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({
+      success: false,
 
-            message: 'Internal server error'
+      message: 'Internal server error'
 
-        })
-    }
+    })
+  }
 
 
 
@@ -299,9 +301,9 @@ const getSellerSubOrders = async (req, res) => {
 
 
 export {
-    getSellerSubOrders,
-    createProduct,
-    getAllProductsBySeller,
-    deleteProduct,
-    createVariants
+  getSellerSubOrders,
+  createProduct,
+  getAllProductsBySeller,
+  deleteProduct,
+  createVariants
 }

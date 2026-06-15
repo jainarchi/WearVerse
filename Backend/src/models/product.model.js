@@ -1,10 +1,17 @@
 import mongoose from "mongoose";
 import priceSchema from "./price.model.js";
+import {CATEGORIES} from "../constants/categories.js"
 
 const productSchema = new mongoose.Schema({
   seller: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
+    required: true
+  },
+
+  category: {
+    type: String,
+    enum: CATEGORIES,
     required: true
   },
 
@@ -47,12 +54,12 @@ const productSchema = new mongoose.Schema({
     {
       color: {
         type: String,
-        required: [true , 'color of varient is required']
+        required: [true, 'color of varient is required']
       },
 
       size: {
         type: String,
-        required: [true , 'size of varient is required']
+        required: [true, 'size of varient is required']
       },
 
       stock: {
@@ -75,7 +82,7 @@ const productSchema = new mongoose.Schema({
 
 
 productSchema.index(
-  { _id : 1 , "variants.color": 1, "variants.size": 1 },
+  { _id: 1, "variants.color": 1, "variants.size": 1 },
   { unique: true }
 );
 

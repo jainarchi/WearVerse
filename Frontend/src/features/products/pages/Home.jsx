@@ -11,10 +11,6 @@ const Hero = () => (
   <section className="max-w-[1400px] mx-auto
                       px-5 sm:px-8 lg:px-12 xl:px-16
                       pt-14 sm:pt-20 lg:pt-24 pb-10 sm:pb-14 lg:pb-18">
-    <p className="font-[family-name:var(--font-sans)] text-[10px] sm:text-[11px]
-                  tracking-[0.28em] uppercase text-[#C9A96E] font-medium mb-4 sm:mb-5">
-      Spring / Summer 2026
-    </p>
     <h1
       className="font-[family-name:var(--font-serif)] font-light leading-[1.02]
                  text-[#1b1c1a] mb-5 sm:mb-6 max-w-xl lg:max-w-2xl

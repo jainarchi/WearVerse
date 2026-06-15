@@ -74,8 +74,9 @@ const SellerProductCard = ({ product, onDelete, isDeleting = false , alignment =
    const firstKey = Object.keys(product.imagesByColor)[0];
 
   const productId  = product?._id;
-  const title       = product?.title
+  const title      = product?.title
   const price      = product?.price;
+  const category   = product?.category;
   const stock      = product?.totalStock;
   const image      = product?.imagesByColor?.[firstKey][0].url  ?? null;
   const createdAt  = product?.createdAt
@@ -154,6 +155,9 @@ const SellerProductCard = ({ product, onDelete, isDeleting = false , alignment =
             >
               {title}
             </h3>
+            
+            <h4 className='text-[13px] py-1 text-snitch-faint font-sarif'>{category}</h4>
+
             {createdAt && (
               <p className="font-label text-[0.55rem] tracking-[0.1em] uppercase text-snitch-faint m-0 mt-1">
                 Added {createdAt}
