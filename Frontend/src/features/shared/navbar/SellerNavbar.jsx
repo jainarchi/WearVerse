@@ -182,7 +182,7 @@ const SellerNavbar
                 className="px-4 py-2 text-sm font-medium text-[#B5ADA3] hover:text-[#C9A96E] hover:bg-[#2a2620] rounded-lg transition-colors sm:hidden flex items-center gap-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <Icons.Profile size={16} /> PROFILE
+                PROFILE
               </Link>
             </div>
           </div>

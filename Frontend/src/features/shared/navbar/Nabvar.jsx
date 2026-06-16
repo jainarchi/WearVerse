@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import Icons from '../icons/Icons'
 import Brandname from '../Brandname'
+import { useSelector } from 'react-redux'
+import { useAuth } from '../../auth/hook/useAuth'
 
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const navigate = useNavigate()
+  const {handleLogout} = useAuth()
+
+  const user = useSelector(state => state.auth.user)
 
   
   // Close search on ESC key or click outside
@@ -127,6 +132,7 @@ const Navbar = () => {
 
              <Link
               to="/cart"
+              onClick={handleLogout}
               className="p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110 relative group"
               aria-label="Cart"
             >
@@ -144,10 +150,19 @@ const Navbar = () => {
               <Icons.Profile size={20} className="text-[#C9A96E]" />
             </Link>
 
+          { user && <Link
+              to="/login"
+              onClick={handleLogout}
+              className="p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110 hidden sm:block"
+              aria-label="Profile"
+            >
+              <Icons.Logout size={20} className="text-[#C9A96E]" />
+            </Link>}
+
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110"
+              className="hidden max-[639px]:block md:hidden p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110"
               aria-label="Menu"
             >
               {isMobileMenuOpen ? (
@@ -161,7 +176,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute right-0  w-full bg-snitch-charcoal border-t border-[#C9A96E]/20 py-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="hidden max-[639px]:block md:hidden absolute right-0  w-full bg-snitch-charcoal border-t border-[#C9A96E]/20 py-4 animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col">
              
                <Link
@@ -202,6 +217,17 @@ const Navbar = () => {
               >
                 <Icons.Profile size={16} /> PROFILE
               </Link>
+
+              <Link
+                to="/login"
+                onClick={handleLogout }
+                className="px-4 py-4 text-sm font-medium text-[#B5ADA3] hover:text-[#C9A96E] hover:bg-[#2a2620] rounded-lg transition-colors sm:hidden flex items-center gap-4"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Icons.Logout size={16} /> LOGOUT
+              </Link>
+
+
             </div>
           </div>
         )}

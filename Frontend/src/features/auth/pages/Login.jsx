@@ -168,7 +168,7 @@ const Login = () => {
                                     >
                                         Password
                                     </label>
-                                    <Link
+                                    {/* <Link
                                         to="#"
                                         className="text-[10px] transition-colors duration-200"
                                         style={{ color: '#B5ADA3' }}
@@ -176,7 +176,7 @@ const Login = () => {
                                         onMouseLeave={e => e.target.style.color = '#B5ADA3'}
                                     >
                                         Forgot password?
-                                    </Link>
+                                    </Link> */}
                                 </div>
                                 <input
                                     id="login-password"

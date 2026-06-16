@@ -149,21 +149,13 @@ const getCartItems = async (req, res) => {
     try {
         const cart = await getCart(req.user.id)
 
-        if (!cart) {
-            return res.status(404).json({
-                success: false,
-                message: "Cart not found"
-            })
-        }
-
         res.status(200).json({
             success: true,
             message: "Cart items fetched successfully",
-            cart
+            cart : cart || {items : []}
 
         })
     }
-
     catch (err) {
         console.log(err)
         res.status(500).json({
