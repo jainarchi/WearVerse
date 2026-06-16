@@ -5,7 +5,7 @@ import ContinueWithGoogleButton from "../components/ContinueWithGoogleButton.jsx
 import Brandname from "../../shared/Brandname.jsx";
 import { toast } from "react-toastify";
 import { registerSchema } from "../validation/auth.schema.js";
-
+import {Link} from 'react-router-dom'
 
 const Register = () => {
   const { handleRegister } = useAuth();
@@ -25,6 +25,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log('register now clicked');
     e.preventDefault();
 
      const validation = registerSchema.safeParse(formData);
@@ -365,8 +366,8 @@ const Register = () => {
                 style={{ color: "#B5ADA3" }}
               >
                 Already have an account?{" "}
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="transition-colors duration-200"
                   style={{
                     color: "#7A6E63",
@@ -377,7 +378,7 @@ const Register = () => {
                   onMouseLeave={(e) => (e.target.style.color = "#7A6E63")}
                 >
                   Sign in
-                </a>
+                </Link>
               </p>
             </form>
           </div>

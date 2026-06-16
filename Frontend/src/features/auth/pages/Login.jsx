@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ContinueWithGoogleButton from '../components/ContinueWithGoogleButton.jsx';
 import {toast} from 'react-toastify'
 import { loginSchema } from '../validation/auth.schema.js';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { handleLogin } = useAuth()
@@ -167,15 +168,15 @@ const Login = () => {
                                     >
                                         Password
                                     </label>
-                                    <a
-                                        href="#"
+                                    <Link
+                                        to="#"
                                         className="text-[10px] transition-colors duration-200"
                                         style={{ color: '#B5ADA3' }}
                                         onMouseEnter={e => e.target.style.color = '#C9A96E'}
                                         onMouseLeave={e => e.target.style.color = '#B5ADA3'}
                                     >
                                         Forgot password?
-                                    </a>
+                                    </Link>
                                 </div>
                                 <input
                                     id="login-password"
@@ -230,15 +231,15 @@ const Login = () => {
                             {/* Footer Link */}
                             <p className="text-center text-[11px]" style={{ color: '#B5ADA3' }}>
                                 Don&apos;t have an account?{' '}
-                                <a
-                                    href="/register"
+                                <Link
+                                    to="/register"
                                     className="transition-colors duration-200"
                                     style={{ color: '#7A6E63', textDecoration: 'underline', textUnderlineOffset: '3px' }}
                                     onMouseEnter={e => e.target.style.color = '#C9A96E'}
                                     onMouseLeave={e => e.target.style.color = '#7A6E63'}
                                 >
                                     Sign up
-                                </a>
+                                </Link>
                             </p>
                         </form>
                     </div>
