@@ -61,7 +61,7 @@ const colorAndSizesValidation = [
     .isInt({ min: 0 })
     .withMessage("Stock must be >= 0"),
 
-  //   optional: total stock consistency check
+  //  total stock consistency check
 
   body("sizes").custom((sizes, { req }) => {
     if (req.body.stock) {

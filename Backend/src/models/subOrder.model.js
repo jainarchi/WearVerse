@@ -19,6 +19,7 @@ const subOrderSchema = new mongoose.Schema({
             ref : 'order',
             required : true
         },
+        
         items: [ // seller ordered proudct  
             {
                 productId: {
@@ -58,6 +59,8 @@ const subOrderSchema = new mongoose.Schema({
                 }
             }
         ],
+
+
         // total price of seller's product in cart
         totalPrice : {
             type : priceSchema,

@@ -27,5 +27,4 @@ router.get('/:id/details' , validateProductId  , getProductDetails)
 
 
 
-
 export default router

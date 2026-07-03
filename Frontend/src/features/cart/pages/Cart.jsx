@@ -126,7 +126,7 @@ const Cart = () => {
         }
       }
 
-      const rzp = new window.Razorpay(options)  // ✅ window.Razorpay
+      const rzp = new window.Razorpay(options)  // window.Razorpay
       rzp.open()
     } else {
       toast.error("Unable to create order")
@@ -253,7 +253,7 @@ const Cart = () => {
 
 
                   <div className="flex flex-col  gap-3">
-                    {user.addresses.map(addr => (
+                    {user?.addresses?.map(addr => (
                       <div
                         key={addr._id}
                         onClick={() => setSelectedAddressId(addr._id)}

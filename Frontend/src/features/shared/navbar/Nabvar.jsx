@@ -132,7 +132,6 @@ const Navbar = () => {
 
              <Link
               to="/cart"
-              onClick={handleLogout}
               className="p-2 hover:bg-[#2a2620] rounded-lg transition-all duration-300 hover:scale-110 relative group"
               aria-label="Cart"
             >

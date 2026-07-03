@@ -23,7 +23,6 @@ const addColorVariant = async ({ product, priceAmount, color, sizes, files }) =>
   );
 
 
-
   // add images to imagesByColor
   product.imagesByColor.set(
     normalizedColor,
@@ -40,6 +39,7 @@ const addColorVariant = async ({ product, priceAmount, color, sizes, files }) =>
     }
 
     seen.add(key);
+    
     product.variants.push({
       size: s.size,
       stock: s.stock,

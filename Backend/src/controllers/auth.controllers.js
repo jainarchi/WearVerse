@@ -118,7 +118,6 @@ const loginUser = async (req, res) => {
  */
 const googleCallback = async (req, res) => {
   const userDetails = req.user;
-  console.log( 'user details :' , userDetails)
 
   const { id, displayName, emails } = userDetails;
 

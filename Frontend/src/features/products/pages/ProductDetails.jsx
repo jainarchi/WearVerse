@@ -425,7 +425,7 @@ const ProductDetails = () => {
                        size={20} 
                        className="cursor-pointer"
                       />
-}
+                    }
                     
                   
                   </span>
@@ -523,19 +523,13 @@ const ProductDetails = () => {
                   </div>
                 )}
 
-                {/* Added date */}
-                {product.createdAt && (
-                  <p className="text-[9px] tracking-[0.18em] uppercase text-[#B5ADA3]
-                                font-[family-name:var(--font-sans)] mb-8">
-                    Added {formatDate(product.createdAt)}
-                  </p>
-                )}
+               
 
 
 
 
                 <div className="flex flex-col gap-3 mt-4">
-                  <ActionButton
+                  {/* <ActionButton
                     label={isOutOfStock ? 'Out of Stock' : 'Buy Now'}
                     variant="primary"
                     disabled={user?.role === 'seller' || isOutOfStock || !selectedVariant}
@@ -546,7 +540,15 @@ const ProductDetails = () => {
                       }
                       //  handleBuyNow(product._id, selectedVariant._id)
                     }}
-                  />
+                  /> */}
+
+                    {
+                      isOutOfStock && (
+                            <h4 className="font-label text-[0.65rem] tracking-[0.12em] uppercase text-red-600 bg-red-50 border text-center border-red-100 px-2 py-0.5">Out of Stock</h4>
+                      )
+                    }
+                    
+
                   <ActionButton
                     label="Add to Cart"
                     variant="secondary"

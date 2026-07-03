@@ -10,7 +10,7 @@ const router = Router()
  * @description Add a product to cart
  * @param  productId - Product ID of the product to be added
  * @param  variantId - Variant ID of the variant of product to be added
- * @param  quantity - Quantity of the product
+ * @body quantity - Quantity of the product to be added (optional, default is 1)
  * @access Private
  */
 
@@ -20,7 +20,7 @@ router.post('/add/:productId/:variantId' , authenticateUser , validateAddToCart,
 
 
 /**
- * @route DELETE /api/cart/remove/:productId/:variantId
+ * @route DELETE /api/cart/remove/:itemId
  * @description Remove an item from cart
  * @param  itemId - Item ID of the item to be removed
  * @access Private

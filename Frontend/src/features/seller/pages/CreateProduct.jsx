@@ -218,8 +218,8 @@ const CreateProduct = () => {
                                                 onChange={handleChange}
                                                 required
                                                 min="0"
-                                                step="0.01"
-                                                placeholder="0.00"
+                                                step="1"
+                                                placeholder="1000"
                                                 className={inputClass}
                                                 style={inputStyle}
                                                 onFocus={handleFocus}

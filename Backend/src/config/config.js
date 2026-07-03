@@ -11,12 +11,13 @@ if(! process.env.JWT_SECRET_KEY){
     throw new Error('JWT secret key not defined in environment variables')
 }
 
-if(! process.env.GOOGLE_CLIENT_ID){
-    throw new Error('Google client ID not defined in environment variables')
+if(! process.env.GOOGLE_CLIENT_ID || ! process.env.GOOGLE_CLIENT_SECRET){
+    throw new Error('Google client ID or secret not defined in environment variables')
 }
 
-if(! process.env.GOOGLE_CLIENT_SECRET){
-    throw new Error('Google client secret not defined in environment variables')
+
+if(! process.env.GOOGLE_CALLBACK_URL){
+    throw new Error('Google callback URL not defined in environment variables')
 }
 
 if(! process.env.IMAGE_KIT_PRIVATE_KEY){
@@ -35,9 +36,6 @@ if(! process.env.CLIENT_URL){
     throw new Error('Client URL not defined in environment variables')
 }
 
-if(! process.env.GOOGLE_CALLBACK_URL){
-    throw new Error('Google callback URL not defined in environment variables')
-}
 
 
 export const config = {
@@ -49,8 +47,8 @@ export const config = {
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
     IMAGE_KIT_PRIVATE_KEY:process.env.IMAGE_KIT_PRIVATE_KEY,
-    RAZORPAY_KEY_ID:process.env.RAZORPAY_KEY_ID || null ,
-    RAZORPAY_KEY_SECRET:process.env.RAZORPAY_KEY_SECRET || null,
+    RAZORPAY_KEY_ID:process.env.RAZORPAY_KEY_ID ,
+    RAZORPAY_KEY_SECRET:process.env.RAZORPAY_KEY_SECRET,
     REDIS_HOST: process.env.REDIS_HOST,
     REDIS_PORT: process.env.REDIS_PORT,
     REDIS_PASSWORD: process.env.REDIS_PASSWORD,

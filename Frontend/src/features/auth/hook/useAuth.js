@@ -85,9 +85,10 @@ export const useAuth = () => {
     }
   };
 
+  
+
   const handleLogout = async () => {
     try {
-      console.log("handle logout runs...")
       await logout();
       dispatch(setUser(null));
 

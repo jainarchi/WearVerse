@@ -41,19 +41,19 @@ router.get(
   passport.authenticate("google", { scope: ["profile", "email"] }),
 );
 
-7;
+
 /**
  * @route GET /api/auth/google/callback
  * @description Google authentication callback after user grant permissions.
- *              Auth code comes in req.params from client side
- *              exchange auth code with user details from google, user details availabe in req.user
+ *              redirect to server and hit callback url with auth code then passport send auth code along with secret to google 
+ *              get user details, set in req.user and then controller runs
  * @access Public
  */
 
 router.get(
   "/google/callback",
   passport.authenticate(
-    "google", // also check code is valid or not and get details from google then controller run
+    "google",           
     {
       failureRedirect:
         config.NODE_ENV === "development"

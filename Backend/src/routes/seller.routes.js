@@ -70,7 +70,7 @@ const router = Router()
 router.post('/create-product' , 
     authenticateSeller,
     upload.array('images' , 5), 
-    multerErrorHandler,           // handle size/count/type errors
+    multerErrorHandler,              // handle size/count/type errors
     parseSizes ,
     validateProduct ,   
     createProduct 
@@ -88,8 +88,6 @@ router.post('/create-product' ,
 router.get('/orders' , authenticateSeller , getSellerSubOrders )
 
 
-
-
   
 
   /**
@@ -100,8 +98,6 @@ router.get('/orders' , authenticateSeller , getSellerSubOrders )
 
 
 router.get('/products' , authenticateSeller , getAllProductsBySeller)    
-
-
 
 
 

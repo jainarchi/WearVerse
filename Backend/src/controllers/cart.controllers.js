@@ -152,7 +152,7 @@ const getCartItems = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Cart items fetched successfully",
-            cart : cart || {items : []}
+            cart: cart || { items: [] }
 
         })
     }
@@ -187,6 +187,7 @@ const incrementCartItemQuantity = async (req, res) => {
 
 
         const item = cart.items.id(itemId)
+
         if (!item) {
             return res.status(404).json({
                 success: false,
@@ -308,16 +309,14 @@ const createOrderController = async (req, res) => {
         if (!cart || cart.items.length === 0) {
             return res.status(404).json({
                 success: false,
-                message: "Cart not found"
+                message: "Cart is empty or not found"
             })
         }
-
-        // check stock
 
 
         const razorpayOrder = await createOrder({ amount: cart.totalAmount, currency: cart.currency })
 
-        
+
 
         const payment = await paymentModel.create({
             user: req.user.id,
@@ -363,7 +362,7 @@ const createOrderController = async (req, res) => {
 }
 
 
-/**
+/** 
  * @desc verify order and create user order and seller order
  */
 
@@ -487,7 +486,7 @@ const verifyOrderController = async (req, res) => {
         await session.commitTransaction()
         session.endSession()
 
-       
+
         res.status(200).json({
             success: true,
             message: "Payment verified successfully",
