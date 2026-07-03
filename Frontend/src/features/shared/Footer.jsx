@@ -26,68 +26,22 @@ const Footer = () => {
           <>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 mb-12">
                 {/* Brand Section */}
                 <div className="col-span-1 sm:col-span-2 lg:col-span-1 animate-fade-in pr-12 max-w-[28rem]">
                   <div className="mb-6 group cursor-pointer">
                     <Brandname />
                   </div>
-                  <p className="font-[family-name:var(--font-sans)] text-[12px] leading-relaxed text-[#9b9387] mb-6">
+                  <p className="font-[family-name:var(--font-sans)] text-[15px] leading-relaxed text-[#9b9387] mb-6">
                     Curating the essentials of modern heritage. A sanctuary for the
                     discerning collector where textiles meet architectural precision.
                   </p>
                 </div>
 
-                {/* Collections */}
-                <div className="animate-fade-in" style={{ animationDelay: "100ms" }}>
-                  <h3 className="text-sm font-semibold text-black mb-4 tracking-[0.1em] uppercase">
-                    SHOP
-                  </h3>
-                  <ul className="space-y-2">
-                    {[
-                      ["New Arrivals", "/"],
-                      ["Cart", "/cart"],
-                    ].map((item) => (
-                      <li key={item[0]}>
-                        <a
-                          href={item[1]}
-                          className="text-sm text-[#9b9387] hover:text-[#C9A96E] transition-colors duration-300 relative group font-[family-name:var(--font-sans)]"
-                        >
-                          {item[0]}
-                          <span className="absolute bottom-0 left-0 w-0 h-px bg-[#C9A96E] group-hover:w-full transition-all duration-300"></span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Company */}
-                <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
-                  <h3 className="text-sm font-semibold text-black mb-4 tracking-[0.1em] uppercase">
-                    ACCOUNT
-                  </h3>
-                  <ul className="space-y-2">
-                    {[
-                      ["Login", "/login"],
-                      ["Register", "/register"],
-                      ["Your Orders", "/orders"],
-                    ].map((item) => (
-                      <li key={item[0]}>
-                        <a
-                          href={item[1]}
-                          className="text-sm text-[#9b9387] hover:text-[#C9A96E] transition-colors duration-300 relative group font-[family-name:var(--font-sans)]"
-                        >
-                          {item[0]}
-                          <span className="absolute bottom-0 left-0 w-0 h-px bg-[#C9A96E] group-hover:w-full transition-all duration-300"></span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
 
                 {/* Assistance */}
                 <div className="animate-fade-in" style={{ animationDelay: "300ms" }}>
-                  <h3 className="text-sm font-semibold text-black mb-4 tracking-[0.1em] uppercase">
+                  <h3 className="text-sm font-semibold text-[#C9A96E] mb-4 tracking-[0.1em] uppercase">
                     ASSISTANCE
                   </h3>
                   <ul className="space-y-2">
